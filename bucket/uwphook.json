@@ -1,5 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/ScoopInstaller/Scoop/master/schema.json",
+    "description": "Add your Windows Store or UWP games to Steam",
     "homepage": "https://briano.dev/UWPHook/",
     "license": "MIT",
     "version": "2.14.3",
