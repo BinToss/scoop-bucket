@@ -1,0 +1,49 @@
+{
+    "version": "0.2.0-nightly",
+    "description": "Non-linear video editor aiming to provide a fully-featured alternative to high-end professional video editing software.",
+    "homepage": "https://olivevideoeditor.org",
+    "license": "GPL-3.0-only",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/olive-editor/olive/releases/download/0.2.0-nightly/Olive-8ac191ce-Windows-x86_64-Portable.zip",
+            "hash": "b0ed9c8291093c29b01090ec49198af001c9d881c35f49ccf0f5030df994c4a5",
+            "extract_dir": "olive-editor"
+        }
+    },
+    "pre_install": [
+        "if (!(Test-Path \"$persist_dir\\config.xml\")) {",
+        "   '<Configuration></Configuration>' | Out-File -FilePath \"$dir\\config.xml\"",
+        "   New-Item \"$dir\\shortcuts\" -ItemType File | Out-Null",
+        "}",
+        "New-Item \"$dir\\portable\" -ErrorAction SilentlyContinue | Out-Null"
+    ],
+    "pre_uninstall": [
+        "# The following must be done as Olive Editor Nightly deletes the original file which was linked to the persist folder when it saves settings, rather than editing the file. It also deletes the shortcut file if it is empty, previously causing errors on uninstallation.",
+        "Copy-Item \"$dir\\config.xml\" \"$persist_dir\\config.xml\" -ErrorAction SilentlyContinue",
+        "if (!(Test-Path \"$dir\\shortcuts\")) {",
+        "   New-Item \"$dir\\shortcuts\" -ItemType File | Out-Null",
+        "}"
+    ],
+    "bin": "olive-editor.exe",
+    "shortcuts": [
+        [
+            "olive-editor.exe",
+            "Olive Editor Nightly"
+        ]
+    ],
+    "persist": [
+        "config.xml",
+        "shortcuts"
+    ],
+    "checkver": {
+        "url": "https://github.com/olive-editor/olive/releases",
+        "regex": "(?<=\\/olive-editor\\/olive\\/tree\\/)(?<tag>[\\d.]+(-\\w+)?)(?=[\\s\\S\\n]+<\\/span>[\\s\\S]+olive\\/commit\\/(?<commit>[\\da-f]{8})b64476b50cd8e16dce7c971fb791af95)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/olive-editor/olive/releases/download/$matchTag/Olive-$matchCommit-Windows-x86_64-Portable.zip"
+            }
+        }
+    }
+}
