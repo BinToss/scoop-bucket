@@ -1,5 +1,5 @@
 {
-    "version": "0.2.0-nightly",
+    "version": "-nightly",
     "description": "Non-linear video editor aiming to provide a fully-featured alternative to high-end professional video editing software.",
     "homepage": "https://olivevideoeditor.org",
     "license": "GPL-3.0-only",
