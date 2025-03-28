@@ -3,12 +3,30 @@
     "description": "Deskflow lets you share one mouse and keyboard between multiple computers on Windows, macOS and Linux. It's like a software KVM (but without video). Sponsored by Synergy.",
     "homepage": "https://github.com/deskflow/deskflow",
     "license": "GNU General Public License v2.0",
-    "bin": "deskflow.exe",
+    "bin": [
+        "deskflow.exe",
+        "deskflow_client.exe",
+        "deskflow_daemon.exe",
+        "deskflow_server.exe"
+    ],
+    "shortcuts": [
+        [
+            "Deskflow",
+            "deskflow.exe"
+        ]
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/deskflow/deskflow/releases/download/v1.21.0/deskflow-1.21.0-win-x64.msi",
             "hash": "7f566e632269520cc331c451601c6099b7e7690da2d334fa26f3d52ff5b005cb"
         }
+    },
+    "installer": {
+        "script": "msiexec.exe /install \"$fname\" /passive INSTALL_ROOT=\"$dir\"",
+        "keep": true
+    },
+    "uninstaller": {
+        "script": "msiexec.exe /uninstall /passive \"$((gi $dir/*.msi).FullName)\""
     },
     "checkver": "github",
     "autoupdate": {
