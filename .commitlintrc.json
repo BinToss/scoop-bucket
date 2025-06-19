@@ -1,0 +1,17 @@
+{
+  "rules": {
+    "scope-enum": [
+      2,
+      "always",
+      [
+        "commitlint",
+        "deskflow-np",
+        "dwmblurglass",
+        "olive-editor-nightly",
+        "rawaccel",
+        "reloaded-ii",
+        "uwphook"
+      ]
+    ]
+  }
+}
