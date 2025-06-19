@@ -14,3 +14,9 @@ trim_trailing_whitespace = true
 
 [*.{yml,yaml}]
 indent_size = 2
+
+[*.json]
+indent_size = 2
+
+[bucket/**.json]
+indent_size = 4
