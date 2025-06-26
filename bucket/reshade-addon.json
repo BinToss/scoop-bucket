@@ -1,0 +1,21 @@
+{
+    "version": "6.5.1",
+    "description": "A generic post-processing injector for games and video software. This release variant includes full add-on support and is intended for single-player games only.",
+    "homepage": "https://reshade.me/",
+    "license": "BSD-3-Clause",
+    "url": "https://reshade.me/downloads/ReShade_Setup_6.5.1_Addon.exe#/ReShade_Addon.exe",
+    "hash": "sha256:3BE164186103DCF126AF3D75D8EFDF850C4ED9F88919505C16A52E6D0EF135A7",
+    "shortcuts": [
+        [
+            "ReShade_Addon.exe",
+            "ReShade (Full Addon Support)"
+        ]
+    ],
+    "checkver": {
+        "url": "https://reshade.me/",
+        "regex": "href=\"/downloads/ReShade_Setup_([\\d.]+)_Addon.exe\""
+    },
+    "autoupdate": {
+        "url": "https://reshade.me/downloads/ReShade_Setup_$version_Addon.exe"
+    }
+}
