@@ -23,5 +23,6 @@
         "**/CVS": true,
         "**/.DS_Store": true,
         "**/tmp": true
-    }
+    },
+    "commitlint.config.file": "./.commitlintrc.json"
 }
