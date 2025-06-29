@@ -23,6 +23,14 @@ jobs:
         with:
           repository: ScoopInstaller/Scoop
           path: scoop_core
+      # If not merged yet, apply fix from https://github.com/ScoopInstaller/Scoop/pull/6395 to ignore non-manifest JSON files
+      - name: Patch Get-GitChangedFile
+        shell: powershell
+        working-directory: scoop_core
+        run: if (-NOT (git grep 93b9bae33a88ccde6590c4df3f589f47c58a527e)) {
+            git remote add --fetch bintoss https://github.com/BinToss/ScoopInstaller.Scoop.git;
+            git cherry-pick -n --empty drop 93b9bae
+          ;}
       - name: Init Test Suite
         uses: potatoqualitee/psmodulecache@main
         with:
@@ -47,6 +55,14 @@ jobs:
         with:
           repository: ScoopInstaller/Scoop
           path: scoop_core
+      # If not merged yet, apply fix from https://github.com/ScoopInstaller/Scoop/pull/6395 to ignore non-manifest JSON files
+      - name: Patch Get-GitChangedFile
+        shell: pwsh
+        working-directory: scoop_core
+        run: if (!(git grep 93b9bae33a88ccde6590c4df3f589f47c58a527e)) {
+            git remote add --fetch bintoss https://github.com/BinToss/ScoopInstaller.Scoop.git;
+            git cherry-pick -n --empty drop 93b9bae
+          ;}
       - name: Init Test Suite
         uses: potatoqualitee/psmodulecache@main
         with:
